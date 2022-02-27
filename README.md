@@ -1,5 +1,5 @@
 # Course Prerequisite Chart
-This repo is focused on tools for generating course prerequisite charts to help navigate and plan out courses.
+This repo is focused on tools for generating course prerequisite charts to help navigate and plan out courses. The generated charts are based on interactive graph data structure visualizations of courses and their pre/co-requisites.
 
 ## Contents
 - `graph_tools.py` - a library of graph datastructure tools to enable a quick visualization of course prerequisites using a graph data structure.
