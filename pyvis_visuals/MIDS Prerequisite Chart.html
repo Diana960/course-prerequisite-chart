@@ -1,0 +1,108 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis.css" type="text/css" />
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.16.1/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 1000px;
+            height: 1000px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"color": "red", "id": "W200", "label": "W200", "shape": "dot"}, {"color": "red", "id": "W207", "label": "W207", "shape": "dot"}, {"color": "blue", "id": "W209", "label": "W209", "shape": "dot"}, {"color": "red", "id": "W210", "label": "W210", "shape": "dot"}, {"color": "blue", "id": "W231", "label": "W231", "shape": "dot"}, {"color": "blue", "id": "W233", "label": "W233", "shape": "dot"}, {"color": "blue", "id": "W241", "label": "W241", "shape": "dot"}, {"color": "blue", "id": "W251", "label": "W251", "shape": "dot"}, {"color": "blue", "id": "W255", "label": "W255", "shape": "dot"}, {"color": "blue", "id": "W261", "label": "W261", "shape": "dot"}, {"color": "blue", "id": "W266", "label": "W266", "shape": "dot"}, {"color": "blue", "id": "W271", "label": "W271", "shape": "dot"}, {"color": "blue", "id": "W281", "label": "W281", "shape": "dot"}, {"color": "red", "id": "W201", "label": "W201", "shape": "dot"}, {"color": "red", "id": "W203", "label": "W203", "shape": "dot"}, {"color": "red", "id": "W205", "label": "W205", "shape": "dot"}]);
+        edges = new vis.DataSet([{"arrows": "to", "color": "black", "from": "W201", "to": "W207"}, {"arrows": "to", "color": "black", "from": "W203", "to": "W207"}, {"arrows": "to", "color": "black", "from": "W201", "to": "W209"}, {"arrows": "to", "color": "black", "from": "W203", "to": "W209"}, {"arrows": "to", "color": "green", "from": "W205", "to": "W209"}, {"arrows": "to", "color": "black", "from": "W201", "to": "W231"}, {"arrows": "to", "color": "black", "from": "W201", "to": "W233"}, {"arrows": "to", "color": "black", "from": "W201", "to": "W241"}, {"arrows": "to", "color": "black", "from": "W203", "to": "W241"}, {"arrows": "to", "color": "black", "from": "W201", "to": "W251"}, {"arrows": "to", "color": "black", "from": "W203", "to": "W251"}, {"arrows": "to", "color": "black", "from": "W205", "to": "W251"}, {"arrows": "to", "color": "black", "from": "W201", "to": "W255"}, {"arrows": "to", "color": "black", "from": "W205", "to": "W255"}, {"arrows": "to", "color": "black", "from": "W207", "to": "W255"}, {"arrows": "to", "color": "black", "from": "W201", "to": "W261"}, {"arrows": "to", "color": "black", "from": "W205", "to": "W261"}, {"arrows": "to", "color": "black", "from": "W207", "to": "W261"}, {"arrows": "to", "color": "black", "from": "W201", "to": "W266"}, {"arrows": "to", "color": "black", "from": "W207", "to": "W266"}, {"arrows": "to", "color": "black", "from": "W201", "to": "W271"}, {"arrows": "to", "color": "black", "from": "W203", "to": "W271"}, {"arrows": "to", "color": "black", "from": "W201", "to": "W281"}, {"arrows": "to", "color": "black", "from": "W207", "to": "W281"}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": false,
+            "type": "continuous"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": false,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
